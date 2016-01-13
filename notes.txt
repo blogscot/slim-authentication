@@ -1,0 +1,3 @@
+
+// Use this to update autoloading to include our own package
+composer dump-autoload -o
