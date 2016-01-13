@@ -20,6 +20,6 @@ $app->configureMode($app->config('mode'), function() use($app) {
   $app->config = Config::load(INC_ROOT . "/app/config/development.php");
 });
 
-var_dump($app->config);
+require 'database.php';
 
 // $app->run();

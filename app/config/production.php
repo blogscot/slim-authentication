@@ -11,7 +11,7 @@ return [
   db => [
     'driver' => 'mysql',
     'host' => '127.0.0.1',
-    'name' => 'authentication_db',
+    'database' => 'authentication_db',
     'username' => 'root',
     'password' => 'root',
     'charset' => 'utf8',
