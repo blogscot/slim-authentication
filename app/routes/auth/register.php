@@ -15,8 +15,8 @@ $app->post('/register', function() use ($app) {
   $v = $app->validation;
 
   $v->validate([
-    'email' => [$email, 'required|email'],
-    'username' => [$username, 'required|alnumDash|max(20)'],
+    'email' => [$email, 'required|email|uniqueEmail'],
+    'username' => [$username, 'required|alnumDash|uniqueUsername|max(20)'],
     'password' => [$password, 'required|min(6)'],
     'password_confirm' => [$passwordConfirm, 'required|matches(password)'],
   ]);
@@ -35,5 +35,5 @@ $app->post('/register', function() use ($app) {
     'errors' => $v->errors(),
     'request' => $request
   ]);
-  
+
 })->name('register.post');
