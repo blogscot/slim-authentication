@@ -6,6 +6,7 @@ use Slim\Views\TwigExtension;
 
 use Noodlehaus\Config;
 use Codecourse\User\User;
+use Codecourse\Mail\Mailer;
 use Codecourse\Helpers\Hash;
 use Codecourse\Validation\Validator;
 
@@ -47,6 +48,28 @@ $app->container->singleton('hash', function() use ($app) {
 
 $app->container->singleton('validation', function() use ($app) {
   return new Validator($app->user);
+});
+
+$app->container->singleton('mail', function() use ($app) {
+  $mailer = new PHPMailer;
+
+  //Enable SMTP debugging
+  // 0 = off (for production use)
+  // 1 = client messages
+  // 2 = client and server messages
+  $mailer->isSMTP();
+  $mailer->SMTPDebug = 2;
+  $mailer->Debugoutput = 'html';
+  $mailer->Host = $app->config->get('mail.host');
+  $mailer->Port = $app->config->get('mail.port');
+  $mailer->SMTPSecure = $app->config->get('mail.smtp_secure');
+  $mailer->SMTPAuth = $app->config->get('mail.smtp_auth');
+  $mailer->Username = $app->config->get('mail.username');
+  $mailer->Password = $app->config->get('mail.password');
+
+  $mailer->isHTML($app->config->get('mail.html'));
+
+  return new Mailer($app->view, $mailer);
 });
 
 $view = $app->view();
