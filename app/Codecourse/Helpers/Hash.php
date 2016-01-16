@@ -24,7 +24,11 @@ class Hash {
     return hash('sha256', $input);
   }
 
+  protected function hash_equals($a, $b) {
+      return substr_count($a ^ $b, "\0") * 2 === strlen($a . $b);
+  }
+
   public function hashCheck($known, $user) {
-    return hash_equals($known, $user);
+    return $this->hash_equals($known, $user);
   }
 }
