@@ -5,6 +5,8 @@ use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 
 use Noodlehaus\Config;
+use RandomLib\Factory as RandomLib;
+
 use Codecourse\User\User;
 use Codecourse\Mail\Mailer;
 use Codecourse\Helpers\Hash;
@@ -70,6 +72,11 @@ $app->container->singleton('mail', function() use ($app) {
   $mailer->isHTML($app->config->get('mail.html'));
 
   return new Mailer($app->view, $mailer);
+});
+
+$app->container->singleton('randomLib', function() use ($app) {
+  $factory = new RandomLib;
+  return $factory->getMediumStrengthGenerator();
 });
 
 $view = $app->view();
