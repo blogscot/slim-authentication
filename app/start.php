@@ -13,6 +13,7 @@ use Codecourse\Helpers\Hash;
 use Codecourse\Validation\Validator;
 
 use Codecourse\Middleware\BeforeMiddleware;
+use Codecourse\Middleware\CsrfMiddleware;
 
 session_cache_limiter(false);
 session_start();
@@ -30,6 +31,7 @@ $app = new Slim([
 ]);
 
 $app->add(new BeforeMiddleware);
+$app->add(new CsrfMiddleware);
 
 $app->configureMode($app->config('mode'), function() use($app) {
   $app->config = Config::load(INC_ROOT . "/app/config/development.php");
