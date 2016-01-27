@@ -22,9 +22,9 @@ class Mailer {
     call_user_func($callback, $message);
 
     // Remember to 'Allow less secure apps' in Google's security settings when testing
-    // if (!$this->mailer->send()) {
-    //     echo "Mailer Error: " . $this->mailer->ErrorInfo;
-    //     exit;
-    // }
+    if (!$this->mailer->send()) {
+        echo "Mailer Error: " . $this->mailer->ErrorInfo;
+        exit;
+    }
   }
 }
