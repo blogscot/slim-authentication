@@ -47,6 +47,6 @@ class User extends Eloquent {
   }
 
   public function removeRememberCredentials() {
-    $this->update(null, null);
+    $this->updateRememberCredentials(null, null);
   }
 }
