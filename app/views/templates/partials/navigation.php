@@ -10,6 +10,7 @@
     <li><a href="{{ urlFor('logout') }}">Log out</a> </li>
     <li><a href="{{ urlFor('user.profile', {username: auth.username}) }}">Your Profile</a> </li>
     <li><a href="{{ urlFor('user.all') }}">All Users</a> </li>
+    <li><a href="{{ urlFor('password.change')}}">Change Password</a> </li>
     {%if auth.isAdmin %}
       <li><a href="{{ urlFor('admin.example') }}">Admin area</a> </li>
     {% endif %}
