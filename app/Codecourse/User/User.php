@@ -12,6 +12,7 @@ class User extends Eloquent {
     'password',
     'active',
     'active_hash',
+    'recover_hash',
     'remember_identifier',
     'remember_token'
   ];
