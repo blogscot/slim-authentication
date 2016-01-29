@@ -8,3 +8,5 @@ require INC_ROOT . '/app/routes/auth/activate.php';
 
 require INC_ROOT . '/app/routes/user/all.php';
 require INC_ROOT . '/app/routes/user/profile.php';
+
+require INC_ROOT . '/app/routes/admin/example.php';
