@@ -13,4 +13,5 @@
     <li><a href="{{ urlFor('register') }}">Register</a> </li>
     <li><a href="{{ urlFor('login') }}">Login</a> </li>
   {% endif %}
+  <li><a href="{{ urlFor('user.all') }}">All Users</a> </li>
 </ul>
