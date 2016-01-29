@@ -15,8 +15,8 @@ $app->post('/change-password', $authenticated(), function() use ($app) {
 
   $v->validate([
     'password_old' => [$passwordOld, 'required|matchesCurrentPassword'],
-    'password' => [$passwordOld, 'required|min(6)'],
-    'password_confirm' => [$passwordOld, 'required|matches(password)'],
+    'password' => [$password, 'required|min(6)'],
+    'password_confirm' => [$passwordConfirm, 'required|matches(password)'],
   ]);
 
   if ($v->passes()) {

@@ -43,7 +43,6 @@ $app->post('/recover-password', $guest(), function() use ($app) {
 
       $app->response->redirect($app->urlFor('home'));
     }
-
   }
 
   $app->render('auth/password/recover.php', [
