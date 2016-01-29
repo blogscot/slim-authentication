@@ -33,6 +33,12 @@ class Validator extends Violin {
 
   public function validate_uniqueEmail($value, $input, $args) {
     $user = $this->user->where('email', $value);
+
+    // check if the existing password matches the requested value
+    if ($this->auth && $this->auth->email === $value) {
+      return true;
+    }
+
     return ! (bool) $user->count();
   }
 
