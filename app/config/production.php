@@ -8,7 +8,7 @@ return [
       'cost' => 10
     ]
   ],
-  db => [
+  'db' => [
     'driver' => 'mysql',
     'host' => '127.0.0.1',
     'database' => 'authentication_db',
