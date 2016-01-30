@@ -19,11 +19,10 @@ $app->get('/activate', $guest(), function() use ($app) {
     die();
 
     $app->flash('global', 'There was a problem activating your account.');
-    $app->response->redirect($app->urlFor('home'));
+    return $app->response->redirect($app->urlFor('home'));
   } else {
     $user->activateAccount();
     $app->flash('global', 'Your account has been activated and you can now sign in.');
-    $app->response->redirect($app->urlFor('login'));
-
+    return $app->response->redirect($app->urlFor('login'));
   }
 })->name('activate');

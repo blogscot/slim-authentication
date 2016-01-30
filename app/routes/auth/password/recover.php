@@ -20,7 +20,7 @@ $app->post('/recover-password', $guest(), function() use ($app) {
 
     if (!$user) {
       $app->flash('global', 'Could not find that user.');
-      $app->response->redirect($app->urlFor('password.recover'));
+      return $app->response->redirect($app->urlFor('password.recover'));
     } else {
       // user found
       $identifier = $app->randomLib->generateString(128);
@@ -40,8 +40,7 @@ $app->post('/recover-password', $guest(), function() use ($app) {
           $message->subject('Recover your password');
         });
 
-
-      $app->response->redirect($app->urlFor('home'));
+      return $app->response->redirect($app->urlFor('home'));
     }
   }
 

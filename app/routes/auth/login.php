@@ -51,11 +51,11 @@ $app->post('/login', $guest(), function() use ($app) {
       }
 
       $app->flash('global', 'You are now logged in.');
-      $app->response->redirect($app->urlFor('home'));
+      return $app->response->redirect($app->urlFor('home'));
     } else {
       $app->flash('global', 'Invalid identifier or password.');
       // redirect back to login to display flash message
-      $app->response->redirect($app->urlFor('login'));
+      return $app->response->redirect($app->urlFor('login'));
     }
   }
   $app->render('auth/login.php', [
